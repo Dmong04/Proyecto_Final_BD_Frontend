@@ -21,9 +21,9 @@
 
         <tr v-for="extra in paginatedExtras" :key="extra.id">
           <td>{{ extra.id }}</td>
-          <th>{{ extra.name }}</th>
-          <th>{{ extra.description }}</th>
-          <th>{{ '$' + extra.price.toFixed(2) }}</th>
+          <td>{{ extra.name }}</td>
+          <td>{{ extra.description }}</td>
+          <td>{{ '$' + extra.price.toFixed(2) }}</td>
         </tr>
       </tbody>
     </table>
@@ -51,10 +51,14 @@
 
 <script setup lang="ts">
 
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { ExtraComponet } from './extra.component';
 
-const { extras, loading, error } = ExtraComponet()
+const { extras, loading, error, loadExtras } = ExtraComponet()
+
+onMounted(() => {
+  loadExtras()
+})
 
 const currentPage = ref(1)
 const pageSize = 10

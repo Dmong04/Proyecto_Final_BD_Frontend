@@ -1,11 +1,25 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'http://127.0.0.1:8080/coco_tours/api/v2',
-  timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
-})
+});
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+      console.log('Token being sent:', token); // Debug log
+    } else {
+      console.log('No token found in localStorage'); // Debug log
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
-export default api
+export default api;
