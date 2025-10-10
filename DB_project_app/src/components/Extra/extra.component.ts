@@ -1,4 +1,4 @@
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import extraService from '@/services/extra.service'
 import type { Extra } from '@/models/extra'
 
@@ -13,7 +13,8 @@ export function ExtraComponet() {
 
         try {
             const response = await extraService.getExtras()
-            extras.value = response.data
+            // The array is in response.data.data
+            extras.value = response.data.data
         } catch (err: any) {
             console.error('Error al cargar extras: ', err)
             error.value = err
@@ -21,16 +22,11 @@ export function ExtraComponet() {
             loading.value = false
         }
     }
-
-    onMounted(() => {
-        loadExtras()
-    })
-
     return {
         extras,
         loading,
         error,
-        reload: loadExtras,
+        loadExtras,
     }
 
 }

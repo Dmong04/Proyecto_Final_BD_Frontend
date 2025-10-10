@@ -9,7 +9,11 @@ export interface ExtraData {
 export default {
 
     getExtras() {
-        return api.get('/extra')
+        return api.get('/extra/all')
+    },
+
+    deleteExtra(id: number) {
+        return api.delete(`/extra/${id}`)
     },
 
     createExtra(extraData: ExtraData) {
