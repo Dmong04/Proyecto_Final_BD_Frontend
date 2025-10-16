@@ -9,7 +9,7 @@ export interface TourData {
 export default {
 
     getTours() {
-        return api.get('/tours')
+        return api.get('/tours/all')
     },
 
     createTour(tourData: TourData) {
