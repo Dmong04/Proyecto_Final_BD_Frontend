@@ -40,7 +40,7 @@
             <i class="bi bi-map me-1"></i>Tours disponibles
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><router-link to="/tours" class="dropdown-item">Listar</router-link></li>
+            <li><router-link to="/tours/all" class="dropdown-item">Listar</router-link></li>
             <li><router-link to="/tours/add" class="dropdown-item">Agregar</router-link></li>
           </ul>
         </div>
