@@ -331,7 +331,7 @@ import { TourDetail } from '@/models/tour_detail'
 import tour_detailService from '@/services/tour_detail.service'
 import type { ExtraDetail } from '@/models/extra_detail'
 import extra_detailService from '@/services/extra_detail.service'
-import type { Provider } from '@/models/provider'
+import type { Provider } from '@/models/supplier'
 import providerService from '@/services/provider.service'
 
 const { tours, loading, error } = TourComponent()

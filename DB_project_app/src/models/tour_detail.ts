@@ -1,5 +1,5 @@
 import { Tour } from './tour'
-import { Provider } from './provider'
+import { Provider } from './supplier'
 
 export class TourDetail {
   constructor(
