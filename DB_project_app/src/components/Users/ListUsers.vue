@@ -76,8 +76,12 @@ const pageCount = computed(() =>
 )
 
 const paginatedUsers = computed(() => {
+  if (!Array.isArray(users.value)) {
+    console.error('users.value no es un array:', users.value)
+    return []
+  }
   const start = (currentPage.value - 1) * pageSize
-  return (users.value || []).slice(start, start + pageSize)
+  return users.value.slice(start, start + pageSize)
 })
 
 function changePage(page: number) {

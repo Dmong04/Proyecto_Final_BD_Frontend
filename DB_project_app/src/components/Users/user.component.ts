@@ -13,7 +13,7 @@ export function UserComponent() {
     error.value = null
     try {
       const response = await userService.getusers()
-      users.value = response.data
+      users.value = response.data.data
     } catch (err: any) {
       console.error('Error al cargar usuarios:', err)
       error.value = err

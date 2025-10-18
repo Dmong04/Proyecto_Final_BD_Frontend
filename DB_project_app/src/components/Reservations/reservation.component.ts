@@ -7,7 +7,7 @@ import type { TourDetail } from '@/models/tour_detail'
 import tour_detailService from '@/services/tour_detail.service'
 import type { ExtraDetail } from '@/models/extra_detail'
 import extra_detailService from '@/services/extra_detail.service'
-import type { Provider } from '@/models/supplier'
+// import type { Supplier } from '@/models/supplier'
 import providerService from '@/services/provider.service'
 
 export function ReservationComponent() {
@@ -23,7 +23,7 @@ export function ReservationComponent() {
 
     try {
       const response = await reservationService.getReservations()
-      reservations.value = response.data
+      reservations.value = response.data.data
       console.log("Reservas: ", reservations.value)
     } catch (err: any) {
       console.error('Error al cargar reservas: ', err)

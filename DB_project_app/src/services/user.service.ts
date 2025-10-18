@@ -2,7 +2,7 @@ import api from '@/api/api'
 
 export default {
   getusers() {
-    return api.get('/user')
+    return api.get('/user/all')
   },
 
   findUser(username: string) {

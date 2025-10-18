@@ -14,7 +14,7 @@ export interface ReservationData {
 
 export default {
   getReservations() {
-    return api.get('/reservation')
+    return api.get('/reservation/all')
   },
 
   createReservation(reservationData: ReservationData) {
