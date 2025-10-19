@@ -7,6 +7,7 @@ const API_URL = 'http://localhost:8080/coco_tours/api/v2/auth'
 
 interface LoginResponse {
   data: {
+    user_id: number
     name: string
     username: string
     role: string
@@ -47,18 +48,19 @@ export const useAuth = () => {
       console.log('Login response:', response.data)
 
       if (response.data.success && response.data.data.token) {
-        const { token, role, name, username: user } = response.data.data
+        const { user_id, token, role, name, username: user } = response.data.data
         
         // Limpiar sessionStorage primero
         sessionStorage.clear()
         
         // Guardar en sessionStorage
+        sessionStorage.setItem('USER_ID', user_id.toString())
         sessionStorage.setItem('TOKEN', token)
         sessionStorage.setItem('USER_ROLE', role)
         sessionStorage.setItem('USER_NAME', name)
         sessionStorage.setItem('USERNAME', user)
         
-        console.log('✅ Datos guardados en sessionStorage')
+        console.log('Datos guardados en sessionStorage')
         console.log('Token (primeros 30 chars):', token.substring(0, 30))
         console.log('Role:', role)
         console.log('Name:', name)

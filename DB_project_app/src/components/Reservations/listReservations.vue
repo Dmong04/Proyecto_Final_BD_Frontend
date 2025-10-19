@@ -30,8 +30,8 @@
           <td>{{ reservation.user?.admin?.name || reservation.user?.client?.name || '-' }}</td>
           <!--<td>{{ reservation.detailTour?.tour?.type }}</td>
           <td>{{ reservation.detailExtra?.extra?.name }}</td> -->
-          <td>{{ '$' + reservation.tourPrice }}</td>
-          <td>{{ '$' + reservation.extraPrice }}</td>
+          <td>{{ '$' + reservation.tour_subtotal }}</td>
+          <td>{{ '$' + reservation.extra_subtotal }}</td>
           <td>{{ '$' + reservation.total }}</td>
         </tr>
       </tbody>

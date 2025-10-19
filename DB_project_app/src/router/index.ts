@@ -56,7 +56,7 @@ const router = createRouter({
     {
       path: '/reservations/add',
       name: 'addReservation',
-      component: () => import('../components/Reservations/addReservations.vue'),
+      component: () => import('../components/Reservations/Add_reservations/addReservations.vue'),
       meta: { requiresAuth: true }
     },
     {
