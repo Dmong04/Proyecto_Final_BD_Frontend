@@ -3,12 +3,7 @@ import api from '@/api/api'
 export interface ReservationData {
   date: string
   time: string
-  description: string
-  tourPrice: number
-  extraPrice: number
-  total: number  
-  detailExtra: { id: number | null }
-  detailTour: { id: number }
+  description: string  
   user: { id: number }
 }
 

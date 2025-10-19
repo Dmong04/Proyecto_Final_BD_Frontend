@@ -1,6 +1,6 @@
 import { Client } from "./client";
 
-export class PhoneClient {
+export class ClientPhones {
     constructor(
         public id: number,
         public phone: string,

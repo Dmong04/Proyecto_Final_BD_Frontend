@@ -24,13 +24,16 @@ label {
 
 input.form-control {
   border-radius: 0 0.5rem 0.5rem 0;
+  display: block;
+}
+
+#descripcion {
+  border-radius: 0 0.5rem 0.5rem 0;
+  display: block;
+  margin-right: 2%;
 }
 
 button.btn {
   font-weight: 600;
   border-radius: 0.5rem;
-}
-
-.details {
-  display: flex;
 }

@@ -1,5 +1,3 @@
-import { ExtraDetail } from './extra_detail'
-import { TourDetail } from './tour_detail'
 import { User } from './user'
 
 export class Reservation {
@@ -8,11 +6,9 @@ export class Reservation {
     public date: Date,
     public time: string,
     public description: string,
-    public tourPrice: number,
-    public extraPrice: number,
+    public tour_subtotal: number,
+    public extra_subtotal: number,
     public total: number,
-    public detailExtra: ExtraDetail | null,
-    public detailTour: TourDetail,
     public user: User
   ) { }
 }
