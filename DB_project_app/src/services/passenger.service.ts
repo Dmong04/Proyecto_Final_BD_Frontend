@@ -3,23 +3,26 @@ import api from '@/api/api'
 export interface PassengerData {
   name: string
   age: number
-  tourDetail: number
+  tour_detail: number
 }
 
 export default {
   getPassengers() {
-    return api.get('/pasajeros')
+    return api.get('/passengers/all')
   },
 
   createPassenger(data: PassengerData) {
-    return api.post('/pasajeros', data)
+    return api.post('/passengers', data)
   },
 
   updatePassenger(id: number, updatedData: Partial<PassengerData>) {
-    return api.put(`/pasajeros/${id}`, updatedData)
+    return api.put(`/passengers/${id}`, updatedData)
   },
 
   getPassengerById(id: number) {
-    return api.get(`/pasajeros/${id}`)
+    return api.get(`/passengers/${id}`)
   },
+  deletePassenger(id: number) {
+    return api.delete(`/passengers/${id}`)
+  }
 }

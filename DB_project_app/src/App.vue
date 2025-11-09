@@ -7,9 +7,73 @@
       </router-link>
 
       <div class="navbar-nav ms-auto">
-        <router-link to="/users" class="nav-link" active-class="active">
-          <i class="bi bi-people me-1"></i>Usuarios
-        </router-link>
+        <!-- Usuarios -->
+        <div class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            @click.prevent
+          >
+            <i class="bi bi-people me-1"></i>Usuarios
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><router-link to="/users" class="dropdown-item">Listar</router-link></li>
+            <li><router-link to="/users/admin/add" class="dropdown-item">Agregar Admin</router-link></li>
+            <li><router-link to="/users/client/add" class="dropdown-item">Agregar Cliente</router-link></li>
+          </ul>
+        </div>
+        <!-- Pajeros -->
+        <div class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            @click.prevent
+          >
+            <i class="bi bi-gift me-1"></i>Pasajeros
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><router-link to="/passengers" class="dropdown-item">Listar</router-link></li>
+            <li><router-link to="/passengers/add" class="dropdown-item">Agregar</router-link></li>
+          </ul>
+        </div>
+
+        <!-- Detalle tour -->
+        <div class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            @click.prevent
+          >
+            <i class="bi bi-gift me-1"></i>Detalles Tour
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><router-link to="/detalles_tour" class="dropdown-item">Listar</router-link></li>
+            <li><router-link to="/detalles_tour/add" class="dropdown-item">Agregar</router-link></li>
+          </ul>
+        </div>
+
+        <!-- Detalle Extras -->
+        <div class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            @click.prevent
+          >
+            <i class="bi bi-gift me-1"></i>Detalles Extra
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><router-link to="/detalles_extra" class="dropdown-item">Listar</router-link></li>
+            <li><router-link to="/detalles_extra/add" class="dropdown-item">Agregar</router-link></li>
+          </ul>
+        </div>
 
         <!-- Reservas -->
         <div class="nav-item dropdown">

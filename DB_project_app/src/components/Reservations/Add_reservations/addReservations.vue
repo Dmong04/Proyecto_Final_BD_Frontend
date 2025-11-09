@@ -2,7 +2,10 @@
   <div class="container mt-5">
     <div class="card shadow-lg border-0 rounded-4">
       <div class="card-header custom-header">
-        <h4 class="mb-0"><i class="bi bi-file-earmark-plus"></i>Agregar Reserva</h4>
+        <h4 class="mb-0">
+          <i class="bi bi-file-earmark-plus"></i>
+          {{ isEditMode ? 'Editar Reserva' : 'Agregar Reserva' }}
+        </h4>
       </div>
 
       <div class="card-body">
@@ -42,7 +45,8 @@
 
               <div class="d-flex justify-content-center mt-4">
                 <button type="submit" class="btn btn-dark btn-sm">
-                  <i class="bi bi-save me-2"></i>Continuar
+                  <i class="bi bi-save me-2"></i>
+                  {{ isEditMode ? 'Actualizar' : 'Continuar' }}
                 </button>
               </div>
           </div>
@@ -54,5 +58,5 @@
 
 <script setup lang="ts">
 import { ReservationComponent } from '../reservation.component';
-const { date, time, description, submit} = ReservationComponent();
+const { date, time, description, submit, isEditMode} = ReservationComponent();
 </script>

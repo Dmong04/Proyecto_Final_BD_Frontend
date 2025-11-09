@@ -2,13 +2,13 @@ import api from '@/api/api'
 
 export interface ExtraDetailData {
   participants: number
-  price: number
-  extra: { id: number }
+  extra: number
+  reservations: number
 }
 
 export default {
   getExtraDetails() {
-    return api.get('/extra_details')
+    return api.get('/extra_details/all')
   },
 
   createExtraDetail(data: ExtraDetailData) {
@@ -22,4 +22,8 @@ export default {
   getExtraDetailById(id: number) {
     return api.get(`/extra_details/${id}`)
   },
+
+  deleteExtraDetail(id: number) {
+    return api.delete(`/extra_details/${id}`)
+  }
 }

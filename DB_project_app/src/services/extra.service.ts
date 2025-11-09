@@ -27,4 +27,5 @@ export default {
     updateExtra(id: number, updatedData: Partial<ExtraData>) {
         return api.put(`/extra/${id}`, updatedData)
     },
+
 }

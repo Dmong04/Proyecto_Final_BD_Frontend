@@ -1,16 +1,15 @@
 import api from '@/api/api'
 
 export interface TripDetailData {
-  numPassengers: number
   origin: string
   destination: string
-  tour: { id: number }
-  provider: { id: number }
+  tour: number
+  reservations: number
 }
 
 export default {
   getTripDetails() {
-    return api.get('/tour_details')
+    return api.get('/tour_details/all')
   },
 
   createTripDetail(data: TripDetailData) {
@@ -24,4 +23,8 @@ export default {
   getTripDetailById(id: number) {
     return api.get(`/tour_details/${id}`)
   },
+
+  deleteTripDetail(id: number) {
+    return api.delete(`/tour_details/${id}`)
+  }
 }

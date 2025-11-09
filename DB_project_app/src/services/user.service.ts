@@ -1,5 +1,20 @@
 import api from '@/api/api'
 
+export interface UserAdminData {
+  name: string
+  email: string
+  username: string
+  password: string
+}
+
+export interface UserClientData {
+  name: string
+  phone: string
+  email: string
+  username: string
+  password: string
+}
+
 export default {
   getusers() {
     return api.get('/user/all')
@@ -9,21 +24,29 @@ export default {
     return api.get(`/user/${username}`)
   },
 
-  createUser(userData: {
-    email: string
-    username: string
-    password: string
-    clientId?: number
-    adminId?: number
-  }) {
-    return api.post('/user', userData)
+
+  createAdminUser(userData: UserAdminData) {
+      return api.post('/user/admin', userData)
   },
 
-  updateUser(id: number, userData: { email: string; username: string }) {
-    return api.put(`/user/${id}`, userData)
+  updateAdminUser(id: number, updateData: Partial<UserAdminData>) {
+    return api.put(`/user/admin/update/${id}`, updateData)
   },
 
-  deleteUser(id: number) {
-    return api.delete(`/user/${id}`)
+  deleteAdminUser(id: number) {
+    return api.delete(`/user/admin/delete/${id}`)
   },
+
+
+  createClientUser(userData: UserClientData) {
+    return api.post('/user/client', userData)
+  },
+
+  updateClientUser(id: number, updateData: Partial<UserClientData>) {
+    return api.put(`/user/admin/update/${id}`, updateData)
+  },
+
+  deleteClientUser(id: number) {
+    return api.delete(`/user/client/delete/${id}`)
+  }
 }

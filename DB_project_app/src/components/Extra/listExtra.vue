@@ -7,6 +7,10 @@
     <div v-if="loading" class="alert alert-info">Cargando extras...</div>
     <div v-if="error" class="alert alert-danger">Error al cargar extras.</div>
 
+    <div class="mb-3">
+      <p class="text-muted">Total de tours: {{ extras.length }}</p>
+    </div>
+
     <table v-if="paginatedExtras.length" class="table table-striped">
       <thead class="table-dark">
         <tr>
@@ -14,6 +18,7 @@
           <th>Nombre</th>
           <th>Descripcion</th>
           <th>PxP</th>
+          <th>Acciones</th>
         </tr>
       </thead>
 
@@ -24,6 +29,14 @@
           <td>{{ extra.name }}</td>
           <td>{{ extra.description }}</td>
           <td>{{ '$' + extra.price.toFixed(2) }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary me-2" title="Editar">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-sm btn-danger" title="Eliminar">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
