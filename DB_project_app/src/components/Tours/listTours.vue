@@ -48,7 +48,7 @@
                 <button class="btn btn-sm btn-primary me-2" title="Editar">
                   <i class="bi bi-pencil"></i>
                 </button>
-                <button class="btn btn-sm btn-danger" title="Eliminar">
+                <button class="btn btn-sm btn-danger"  title="Eliminar" @click="deleteTour(tour)">
                   <i class="bi bi-trash"></i>
                 </button>
               </td>
@@ -64,10 +64,10 @@
               Anterior
             </button>
           </li>
-          <li 
-            v-for="page in totalPages" 
-            :key="page" 
-            class="page-item" 
+          <li
+            v-for="page in totalPages"
+            :key="page"
+            class="page-item"
             :class="{ active: currentPage === page }"
           >
             <button class="page-link" @click="currentPage = page">
@@ -102,12 +102,30 @@ const error = ref<string | null>(null)
 const currentPage = ref(1)
 const itemsPerPage = 10
 
+const deleteTourById = async (tour: any) => {
+  try {
+    await deleteTour(tour.id)
+    alert('Usuario eliminado correctamente')
+    await tours.value.filter(t => t.id !== tour.id)
+  } catch (err: any) {
+    console.error('Error al eliminar usuario:', err)
+    alert('Error al eliminar usuario: ' + (err.message || ''))
+  }
+}
+
+async function deleteTour(tour: any) {
+  const confirmed = confirm(`¿Seguro que deseas eliminar?`)
+  if (confirmed) {
+    await deleteTourById(tour)
+  }
+}
+
 const paginatedTours = computed(() => {
   if (!Array.isArray(tours.value)) {
     console.error('tours.value no es un array:', tours.value)
     return []
   }
-  
+
   const start = (currentPage.value - 1) * itemsPerPage
   const end = start + itemsPerPage
   return tours.value.slice(start, end)
@@ -121,28 +139,28 @@ const totalPages = computed(() => {
 const fetchTours = async () => {
   loading.value = true
   error.value = null
-  
+
   try {
     console.log('=== Fetch Tours ===')
     console.log('SessionStorage keys:', Object.keys(sessionStorage))
     console.log('TOKEN existe:', !!sessionStorage.getItem('TOKEN'))
     console.log('USER_ROLE:', sessionStorage.getItem('USER_ROLE'))
-    
+
     const token = sessionStorage.getItem('TOKEN')
     if (!token) {
       throw new Error('No hay token disponible')
     }
-    
+
     console.log('Token (primeros 30 chars):', token.substring(0, 30))
     console.log('Haciendo petición a /tours/all...')
-    
+
     const response = await api.get('/tours/all')
-    
+
     console.log('✅ Response recibida:', response.status)
     console.log('Response data:', response.data)
     console.log('Tipo de response.data:', typeof response.data)
     console.log('Es array?', Array.isArray(response.data))
-    
+
     if (Array.isArray(response.data)) {
       tours.value = response.data
       console.log('✅ Tours asignados:', tours.value.length)
@@ -164,11 +182,11 @@ const fetchTours = async () => {
     console.error('Error response status:', err.response?.status)
     console.error('Error response data:', err.response?.data)
     console.error('Error response headers:', err.response?.headers)
-    
+
     if (err.response?.status === 401) {
       error.value = 'Sesión expirada. Por favor, inicia sesión nuevamente.'
       console.error('❌ Token rechazado por el servidor')
-      
+
       // Esperar 2 segundos antes de redirigir
       setTimeout(() => {
         sessionStorage.clear()
@@ -191,13 +209,13 @@ const fetchTours = async () => {
 onMounted(() => {
   console.log('=== Componente ListTours montado ===')
   console.log('Verificando autenticación...')
-  
+
   const token = sessionStorage.getItem('TOKEN')
   const role = sessionStorage.getItem('USER_ROLE')
-  
+
   console.log('Token existe:', !!token)
   console.log('Role:', role)
-  
+
   if (!token) {
     console.error('❌ No hay token, redirigiendo a login')
     error.value = 'No hay sesión activa'
@@ -207,7 +225,7 @@ onMounted(() => {
     }, 1000)
     return
   }
-  
+
   fetchTours()
 })
 </script>

@@ -23,6 +23,8 @@ export function TourComponent() {
         }
     }
 
+
+
     onMounted(() => {
         loadTours()
     })
@@ -31,6 +33,7 @@ export function TourComponent() {
         tours,
         loading,
         error,
-        reload: loadTours
+        reload: loadTours,
+        
     }
 }
