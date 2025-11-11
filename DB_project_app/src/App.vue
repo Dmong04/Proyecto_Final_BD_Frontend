@@ -126,6 +126,23 @@
           </ul>
         </div>
 
+        <!-- Proveedores -->
+        <div class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            @click.prevent
+          >
+            <i class="bi bi-truck me-1"></i>Proveedores
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><router-link to="/suppliers" class="dropdown-item">Listar</router-link></li>
+            <li><router-link to="/suppliers/add" class="dropdown-item">Agregar</router-link></li>
+          </ul>
+        </div>
+
         <!-- Contacto -->
         <router-link to="/contacto" class="nav-link" active-class="active">
           <i class="bi bi-envelope me-1"></i>Contáctenos
