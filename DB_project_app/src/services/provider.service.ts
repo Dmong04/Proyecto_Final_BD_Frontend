@@ -2,8 +2,8 @@ import api from '@/api/api'
 
 export interface ProviderData {
   name: string
-  description: string
   email: string
+  address: string  // Cambiado de 'description' a 'address'
 }
 
 export default {
@@ -22,4 +22,8 @@ export default {
   getProviderById(id: number) {
     return api.get(`/provider/${id}`)
   },
+
+  deleteProvider(id: number) {
+    return api.delete(`/provider/${id}`)
+  }
 }

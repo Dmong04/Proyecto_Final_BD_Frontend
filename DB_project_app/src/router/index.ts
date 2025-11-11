@@ -181,6 +181,25 @@ const router = createRouter({
       name: 'nextPassenger',
       component: () => import('../components/Passengers/addPassenger.vue'),
       props: true
+    },
+    {
+      path: '/suppliers',
+      name: 'suppliers',
+      component: () => import('../components/Suppliers/listSuppliers.vue'),
+      meta: { requiresAuth: false }
+    },
+    {
+      path: '/suppliers/add',
+      name: 'addSupplier',
+      component: () => import('../components/Suppliers/addSupplier.vue'),
+      meta: { requiresAuth: false }
+    },
+    {
+      path: '/suppliers/edit/:id',
+      name: 'EditSupplier',
+      component: () => import('../components/Suppliers/addSupplier.vue'),
+      props: true,
+      meta: { requiresAuth: false }
     }
   ]
 })
