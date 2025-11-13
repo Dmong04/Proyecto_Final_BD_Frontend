@@ -1,0 +1,9 @@
+[build]
+  base = "DB_project_app"
+  command = "npm run build"
+  publish = "DB_project_app/dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
