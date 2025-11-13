@@ -56,6 +56,43 @@
             </div>
           </div>
 
+          <!-- Descripción -->
+          <div class="mb-3">
+            <label for="description" class="form-label fw-bold">Descripción</label>
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="bi bi-file-text"></i>
+              </span>
+              <textarea
+                class="form-control"
+                id="description"
+                v-model="description"
+                rows="3"
+                placeholder="Ingrese la descripción del proveedor"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Teléfono -->
+          <div class="mb-3">
+            <label for="phone" class="form-label fw-bold">Teléfono</label>
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="bi bi-telephone"></i>
+              </span>
+              <input
+                type="tel"
+                class="form-control"
+                id="phone"
+                v-model="phone"
+                placeholder="Ingrese 8 dígitos"
+                pattern="[0-9]{8}"
+                required
+              />
+            </div>
+          </div>
+
           <!-- Botones -->
           <div class="d-flex justify-content-between mt-4">
             <router-link to="/suppliers" class="btn btn-secondary">
@@ -79,6 +116,8 @@ const {
   name,
   email,
   address,
+  description,
+  phone,
   isEditMode,
   submit
 } = SupplierComponent()

@@ -3,7 +3,7 @@ import api from '@/api/api'
 export interface TourData {
     type: string
     description: string
-    price: number
+    unitprice: number
 }
 
 export default {

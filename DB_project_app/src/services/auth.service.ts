@@ -3,7 +3,7 @@ import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-const API_URL = 'http://localhost:8080/coco_tours/api/v2/auth'
+const API_URL = 'https://coco-tours-api.azurewebsites.net/coco_tours/api/v2/auth'
 
 interface LoginResponse {
   data: {

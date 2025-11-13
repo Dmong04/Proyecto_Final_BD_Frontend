@@ -35,7 +35,7 @@
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Email</th>
-                <th>Dirección</th>
+                <th>Descripción</th>
                 <th>Teléfonos</th>
                 <th class="text-center">Acciones</th>
               </tr>
@@ -45,7 +45,7 @@
                 <td>{{ supplier.id }}</td>
                 <td>{{ supplier.name }}</td>
                 <td>{{ supplier.email }}</td>
-                <td>{{ supplier.address }}</td>
+                <td>{{ supplier.description }}</td>
                 <td>
                   <span v-if="supplier.phones && supplier.phones.length > 0">
                     <span v-for="(phone, index) in supplier.phones" :key="phone.id">

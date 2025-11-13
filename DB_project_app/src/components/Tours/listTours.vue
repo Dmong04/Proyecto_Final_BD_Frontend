@@ -108,8 +108,8 @@ const deleteTourById = async (tour: any) => {
     alert('Usuario eliminado correctamente')
     await tours.value.filter(t => t.id !== tour.id)
   } catch (err: any) {
-    console.error('Error al eliminar usuario:', err)
-    alert('Error al eliminar usuario: ' + (err.message || ''))
+    console.error('Error al eliminar Tour:', err)
+    alert('Error al eliminar Tour: ' + (err.message || ''))
   }
 }
 

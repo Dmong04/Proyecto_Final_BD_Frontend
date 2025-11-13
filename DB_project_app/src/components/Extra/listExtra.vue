@@ -28,7 +28,7 @@
           <td>{{ extra.id }}</td>
           <td>{{ extra.name }}</td>
           <td>{{ extra.description }}</td>
-          <td>{{ '$' + extra.price.toFixed(2) }}</td>
+          <td>{{ '$' + extra.price?.toFixed(2)}}</td>
           <td>
             <button class="btn btn-sm btn-primary me-2" title="Editar">
               <i class="bi bi-pencil"></i>
