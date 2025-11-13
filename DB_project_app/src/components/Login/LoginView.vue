@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { useAuth } from '@/services/auth.service'
-import '@components/Login/LoginView.css'
+import '@components/Login/Login.css'
 
 const { username, password, error, login } = useAuth()
 </script>
