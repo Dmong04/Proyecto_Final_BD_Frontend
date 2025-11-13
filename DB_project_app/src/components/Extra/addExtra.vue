@@ -34,7 +34,7 @@
           
           <div class="d-flex justify-content-center mt-4">
             <button type="submit" class="btn btn-dark btn-sm">
-                <i class="bi bi-save me-2"></i>Guardar Tour
+                <i class="bi bi-save me-2"></i>Guardar Extra
             </button>
         </div>
 
@@ -56,21 +56,21 @@ const submitExtra = async () => {
   const nuevoExtra = {
     name: nombre.value,
     description: descripcion.value,
-    price: precioPersona.value ?? 0
+    unit_price: precioPersona.value ?? 0
   }
 
-  console.log('Tour enviado:', nuevoExtra)
+  console.log('Extra enviado:', nuevoExtra)
 
   try {
     await extraService.createExtra(nuevoExtra)
-    alert('Tour guardado con éxito')
+    alert('Extra guardado con éxito')
     // limpiar campos si quieres
     nombre.value = ''
     descripcion.value = ''
     precioPersona.value = null
   } catch (error) {
-    console.error('Error guardando tour:', error)
-    alert('Error al guardar el tour')
+    console.error('Error guardando extra:', error)
+    alert('Error al guardar el extra')
   }
 }
 </script>

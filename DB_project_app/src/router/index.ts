@@ -186,20 +186,20 @@ const router = createRouter({
       path: '/suppliers',
       name: 'suppliers',
       component: () => import('../components/Suppliers/listSuppliers.vue'),
-      meta: { requiresAuth: false }
+      meta: { requiresAuth: true }
     },
     {
       path: '/suppliers/add',
-      name: 'addSupplier',
+      name: 'addSuppliers',
       component: () => import('../components/Suppliers/addSupplier.vue'),
-      meta: { requiresAuth: false }
+      meta: { requiresAuth: true }
     },
     {
-      path: '/suppliers/edit/:id',
+      path: '/supplier/edit/:id',
       name: 'EditSupplier',
       component: () => import('../components/Suppliers/addSupplier.vue'),
       props: true,
-      meta: { requiresAuth: false }
+      meta: { requiresAuth: true }
     }
   ]
 })

@@ -9,6 +9,7 @@ export function SupplierComponent() {
   const email = ref('')
   const address = ref('')
   const phone = ref('')
+  const description = ref('')
 
   const suppliers = ref<Supplier[]>([])
   const loading = ref(false)
@@ -44,6 +45,7 @@ export function SupplierComponent() {
       email.value = supplier.email
       address.value = supplier.address
       phone.value = supplier.phone || ''
+      description.value = supplier.description || ''
       console.log('Proveedor cargado para edición:', supplier)
     } catch (err: any) {
       console.error('Error al cargar proveedor por ID:', err)
@@ -53,40 +55,81 @@ export function SupplierComponent() {
 
   const submitSupplier = async () => {
     try {
-      const newSupplier: ProviderData = {
-        name: name.value,
-        email: email.value,
-        address: address.value
+      if (!name.value || !email.value || !address.value || !description.value || !phone.value) {
+        alert('Por favor completa todos los campos requeridos')
+        return
       }
+
+      // Validar que el teléfono tenga exactamente 8 dígitos
+      if (!/^\d{8}$/.test(phone.value)) {
+        alert('El teléfono debe contener exactamente 8 dígitos')
+        return
+      }
+
+      const newSupplier = {
+        name: name.value,
+        description: description.value,
+        email: email.value,
+        phone: phone.value
+      }
+
+      console.log('=== SUPPLIER PAYLOAD ===')
+      console.log('Enviando proveedor:', JSON.stringify(newSupplier, null, 2))
+
       const response = await providerService.createProvider(newSupplier)
-      console.log('Nombre:', name.value)
-      console.log('Email:', email.value)
-      console.log('Dirección:', address.value)
-      alert('Proveedor creado con éxito')
-      console.log('Proveedor creado:', response.data)
-      await loadSuppliers()
       
-      // Limpiar formulario
+      console.log('✅ Respuesta del servidor:', response.data)
+      alert('Proveedor guardado con éxito')
+      
+      // Limpiar campos
       name.value = ''
       email.value = ''
       address.value = ''
+      description.value = ''
       phone.value = ''
       
+      // Recargar lista y redirigir
+      await loadSuppliers()
       router.push('/suppliers')
-    } catch (err: any) {
-      console.error('Error al enviar el proveedor:', err)
-      error.value = err
-      alert('Error al crear el proveedor' + (err.message ? ': ' + err.message : ''))
+      
+    } catch (error: any) {
+      console.error('❌ Error al enviar el proveedor:', error)
+      console.error('Status:', error.response?.status)
+      console.error('Status Text:', error.response?.statusText)
+      console.error('Response Data:', error.response?.data)
+      console.error('Error Message:', error.message)
+      
+      const errorMessage = error.response?.data?.message || 
+                          error.response?.data?.error || 
+                          error.message || 
+                          'Error desconocido'
+      
+      alert(`❌ Error al guardar el proveedor:\n\n${errorMessage}`)
     }
   }
 
   const updateSupplier = async (id: number) => {
     try {
-      const updatedSupplier: Partial<ProviderData> = {
-        name: name.value,
-        email: email.value,
-        address: address.value
+      if (!name.value || !email.value || !address.value || !description.value || !phone.value) {
+        alert('Por favor completa todos los campos requeridos')
+        return
       }
+
+      if (!/^\d{8}$/.test(phone.value)) {
+        alert('El teléfono debe contener exactamente 8 dígitos')
+        return
+      }
+
+      const updatedSupplier = {
+        name: name.value,
+        description: description.value,
+        email: email.value,
+        phone: phone.value
+      }
+
+      console.log('=== UPDATE SUPPLIER PAYLOAD ===')
+      console.log('Actualizando proveedor:', JSON.stringify(updatedSupplier, null, 2))
+
       await providerService.updateProvider(id, updatedSupplier)
       alert('Proveedor actualizado con éxito')
       await loadSuppliers()
@@ -104,9 +147,7 @@ export function SupplierComponent() {
         return
       }
       
-      // Nota: Necesitarás agregar el método deleteProvider en provider.service.ts
-      // await providerService.deleteProvider(supplier.id)
-      
+      await providerService.deleteProvider(supplier.id)
       alert('Proveedor eliminado correctamente')
       await loadSuppliers()
     } catch (err: any) {
@@ -136,6 +177,7 @@ export function SupplierComponent() {
     email,
     address,
     phone,
+    description,
     suppliers,
     loading,
     error,

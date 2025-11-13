@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080/coco_tours/api/v2',
+  baseURL: 'https://coco-tours-api.azurewebsites.net/coco_tours/api/v2',
   headers: {
     'Content-Type': 'application/json'
   }

@@ -1,9 +1,10 @@
+
 import api from '@/api/api'
 
 export interface ExtraDetailData {
-  participants: number
-  extra: number
-  reservations: number
+  person_count: number     
+  extra_id: number         
+  reservation_id: number   
 }
 
 export default {
@@ -12,7 +13,17 @@ export default {
   },
 
   createExtraDetail(data: ExtraDetailData) {
+    console.log('Service: Creating extra detail with:', data)
     return api.post('/extra_details', data)
+      .catch(error => {
+        console.error('Service error details:', {
+          status: error.response?.status,
+          statusText: error.response?.statusText,
+          data: error.response?.data,
+          message: error.message
+        })
+        throw error
+      })
   },
 
   updateExtraDetail(id: number, updatedData: Partial<ExtraDetailData>) {

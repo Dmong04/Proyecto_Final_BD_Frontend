@@ -3,7 +3,7 @@ import api from '@/api/api'
 export interface ExtraData {
     name: string
     description: string
-    price: number
+    unit_price: number
 }
 
 export default {
